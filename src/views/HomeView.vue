@@ -8,6 +8,8 @@
       <h2 id="greeting">Log in to see your Photos</h2>
       <button class="button" id="login-button">LOGIN</button>
     </div>
+    <h1>FAVORITE IMAGES</h1>
+    <button class="button" id="add-button">ADD</button>
   </main>
 </template>
 
@@ -23,7 +25,7 @@
   font-size: 1.1rem;
   font-family: "Anybody", sans-serif;
 }
-#login-button {
+.button {
   background-color: $factoria-orange;
   width: 6rem;
   font-size: 1rem;
@@ -32,6 +34,15 @@
   color: white;
   border-radius: 10px;
   box-shadow: 2px 2px 4px #888888;
+}
+#add-button {
+  display: block;
+  margin: 2rem auto;
+}
+h1 {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
 }
 @media only screen and (min-width: 960px) {
   #login-container {
@@ -42,11 +53,17 @@
     font-size: 1.5rem;
   }
 
-  #login-button {
+  .button {
     width: 8rem;
     font-size: 1.3rem;
     padding: 1rem;
   }
+  h1 {
+  font-size: 2rem;
+}
+#add-button {
+  margin: 2.5rem auto;
+}
 }
 
 @media only screen and (min-width: 1264px) {
@@ -58,9 +75,12 @@
     font-size: 1.5rem;
   }
 
-  #login-button {
+  .button {
     width: 8rem;
     border-radius: 15px;
   }
+  #add-button {
+  margin: 3rem auto;
+}
 }
 </style>
