@@ -4,12 +4,12 @@ import Warning from './components/global/Warning.vue';
 </script>
 
 <template>
-    <div class="wrapper">
+    <!-- <div class="wrapper">
       <nav>
         <RouterLink class="link" to="/">Home</RouterLink>
         <RouterLink class="link" to="/about">About</RouterLink>
       </nav>
-    </div>
+    </div> -->
     
     <Warning/>
 
