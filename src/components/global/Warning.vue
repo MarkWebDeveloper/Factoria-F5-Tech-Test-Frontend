@@ -54,7 +54,7 @@ p {
     margin: 1.5rem 0rem 1.5rem 3rem;
 }
 p {
-    font-size: 2rem;
+    font-size: 1.8rem;
     width: 70%;
     margin: 2rem;
     text-align: right;
