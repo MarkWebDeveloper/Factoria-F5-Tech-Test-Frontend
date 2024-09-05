@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import Warning from './components/global/Warning.vue';
+import LoginForm from './components/global/LoginForm.vue';
+import { useAuthStore } from './stores/authStore';
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -12,6 +16,7 @@ import Warning from './components/global/Warning.vue';
     </div> -->
     
     <Warning/>
+    <LoginForm v-if="authStore.loginFormIsOpened"/>
 
   <RouterView />
 </template>

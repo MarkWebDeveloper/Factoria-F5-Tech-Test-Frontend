@@ -41,7 +41,5 @@
   }
   
   input{
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 0;
+    all: unset;
   }

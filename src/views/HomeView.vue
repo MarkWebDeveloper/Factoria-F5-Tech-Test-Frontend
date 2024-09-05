@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import { useAuthStore } from '@/stores/authStore';
 
+const authStore = useAuthStore()
 </script>
 
 <template>
   <main>
     <div id="login-container">
       <h2 id="greeting">Log in to see your Photos</h2>
-      <button class="button" id="login-button">LOGIN</button>
+      <button class="button" id="login-button" @click="authStore.switchLoginForm()">LOGIN</button>
     </div>
-    <h1>FAVORITE IMAGES</h1>
-    <button class="button" id="add-button">ADD</button>
+    <h1 v-if="authStore.isAuthorized">FAVORITE IMAGES</h1>
+    <button v-if="authStore.isAuthorized" class="button" id="add-button">ADD</button>
   </main>
 </template>
 
@@ -34,6 +36,7 @@
   color: white;
   border-radius: 10px;
   box-shadow: 2px 2px 4px #888888;
+  cursor: pointer;
 }
 #add-button {
   display: block;
