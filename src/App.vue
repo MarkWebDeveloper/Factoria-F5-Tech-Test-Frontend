@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import Warning from './components/global/Warning.vue';
 </script>
 
 <template>
-  <header>
     <div class="wrapper">
       <nav>
         <RouterLink class="link" to="/">Home</RouterLink>
         <RouterLink class="link" to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
+    
+    <Warning/>
 
   <RouterView />
 </template>
