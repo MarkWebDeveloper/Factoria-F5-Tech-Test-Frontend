@@ -20,7 +20,7 @@ export const useAuthStore = defineStore("authStore", {
         try {
             const response = await this.authService.login(loginDTO)
             console.log(response)
-            this.role = response.roles[0]
+            this.role = response.roles
             this.username = response.username
             this.isAuthorized = true
             this.switchLoginForm()

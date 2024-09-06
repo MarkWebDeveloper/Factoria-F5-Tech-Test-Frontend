@@ -13,7 +13,7 @@ const authStore = useAuthStore()
     </div>
     <h1 v-if="authStore.isAuthorized">FAVORITE IMAGES</h1>
     <button v-if="authStore.isAuthorized" class="button" id="add-button">ADD</button>
-    <ImagesContainer/>
+    <ImagesContainer v-if="authStore.isAuthorized"/>
   </main>
 </template>
 
@@ -67,7 +67,7 @@ h1 {
   font-size: 2rem;
 }
 #add-button {
-  margin: 2.5rem auto;
+  margin: 2.5rem auto 3.5rem auto;
 }
 }
 
