@@ -1,6 +1,7 @@
 import AuthService from "@/core/auth/AuthService";
 import type { ILoginDTO } from "@/core/auth/ILoginDTO";
 import { defineStore } from "pinia";
+import { useImagesStore } from "./imagesStore";
 
 export const useAuthStore = defineStore("authStore", {
     state: () => {
@@ -10,6 +11,7 @@ export const useAuthStore = defineStore("authStore", {
             isAuthorized: false as boolean,
             authService: new AuthService,
             loginFormIsOpened: false as boolean,
+            imagesStore: useImagesStore()
           };
     },
   
@@ -22,6 +24,7 @@ export const useAuthStore = defineStore("authStore", {
             this.username = response.username
             this.isAuthorized = true
             this.switchLoginForm()
+            this.imagesStore.getImages()
         } catch (error) {
             console.error(error)
         }

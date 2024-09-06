@@ -1,12 +1,12 @@
 import axios, { type AxiosRequestConfig } from "axios";
 import type { ILoginDTO } from "./ILoginDTO";
-import type { IResponseDTO } from "./IResponseDTO";
+import type { ILoginResponseDTO } from "./ILoginResponseDTO";
 
 export default class LoginService {
 
     private loginURL: string = import.meta.env.VITE_API_ENDPOINT_LOGIN
 
-    async login(loginDTO: ILoginDTO): Promise<IResponseDTO> {
+    async login(loginDTO: ILoginDTO): Promise<ILoginResponseDTO> {
 
         let config: AxiosRequestConfig = {
             auth: {
