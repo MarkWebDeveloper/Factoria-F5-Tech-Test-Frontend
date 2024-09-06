@@ -16,7 +16,7 @@ export const useAuthStore = defineStore("authStore", {
     },
   
     actions: {
-      async login(loginDTO: ILoginDTO) {
+      async login(loginDTO: ILoginDTO): Promise<void> {
         try {
             const response = await this.authService.login(loginDTO)
             console.log(response)
@@ -25,6 +25,15 @@ export const useAuthStore = defineStore("authStore", {
             this.isAuthorized = true
             this.switchLoginForm()
             this.imagesStore.getImages()
+        } catch (error) {
+            console.error(error)
+        }
+      },
+      async logout(): Promise<void> {
+        try {
+            const response = await this.authService.logout()
+            this.isAuthorized = false
+            console.log(response)
         } catch (error) {
             console.error(error)
         }

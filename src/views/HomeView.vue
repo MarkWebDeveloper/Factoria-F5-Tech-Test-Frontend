@@ -8,8 +8,10 @@ const authStore = useAuthStore()
 <template>
   <main>
     <div id="login-container">
-      <h2 id="greeting">Log in to see your Photos</h2>
-      <button class="button" id="login-button" @click="authStore.switchLoginForm()">LOGIN</button>
+      <h2 class="greeting" id="greeting-not-logged" v-if="!authStore.isAuthorized">Log in to see your photos</h2>
+      <h2 class="greeting" id="greeting-logged" v-if="authStore.isAuthorized">Welcome to your favorite photos.</h2>
+      <button class="button" id="login-button" @click="authStore.switchLoginForm()" v-if="!authStore.isAuthorized">LOGIN</button>
+      <button class="button" id="logout-button" @click="authStore.logout()" v-if="authStore.isAuthorized">LOGOUT</button>
     </div>
     <h1 v-if="authStore.isAuthorized">FAVORITE IMAGES</h1>
     <button v-if="authStore.isAuthorized" class="button" id="add-button">ADD</button>
@@ -25,9 +27,10 @@ const authStore = useAuthStore()
   align-items: center;
   padding: 2rem;
 }
-#greeting {
+.greeting {
   font-size: 1.1rem;
   font-family: "Anybody", sans-serif;
+  width: 60%;
 }
 .button {
   background-color: $factoria-orange;
