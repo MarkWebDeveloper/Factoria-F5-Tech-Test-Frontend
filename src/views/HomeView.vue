@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ImagesContainer from '@/components/home/ImagesContainer.vue';
 import { useAuthStore } from '@/stores/authStore';
 
 const authStore = useAuthStore()
@@ -12,6 +13,7 @@ const authStore = useAuthStore()
     </div>
     <h1 v-if="authStore.isAuthorized">FAVORITE IMAGES</h1>
     <button v-if="authStore.isAuthorized" class="button" id="add-button">ADD</button>
+    <ImagesContainer/>
   </main>
 </template>
 

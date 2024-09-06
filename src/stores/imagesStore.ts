@@ -7,7 +7,8 @@ export const useImagesStore = defineStore("imagesStore", {
         return {
             images: [] as IImage[],
             isLoaded: false as boolean,
-            imageService: new ImageService
+            imageService: new ImageService,
+            imageURL: import.meta.env.VITE_APP_API_IMGS as string
           };
     },
   
