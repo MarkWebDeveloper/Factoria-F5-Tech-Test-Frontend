@@ -32,7 +32,7 @@ const imagesStore = useImagesStore()
 @media only screen and (min-width: 1264px) {
     #images-container {
     grid-template-columns: repeat(5, 1fr);
-    row-gap: 5rem;
+    row-gap: 4rem;
 }
 }
 </style>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { IImage } from '@/core/images/IImage';
 import { useImagesStore } from '@/stores/imagesStore';
 
 const imagesStore = useImagesStore()
@@ -16,10 +17,13 @@ async function handleSubmit(): Promise<void> {
     formData.append('imageTitle', imagesStore.updatingImageTitle)
 
     try {
-        imagesStore.updateImage(imagesStore.updatingImage.id, formData)
-        // setTimeout(() => {
-        //     imagesStore.addImageToArray(imagesStore.uploadedImage)
-        // }, 1000);
+        await imagesStore.updateImage(imagesStore.updatingImage.id, formData)
+        setTimeout(() => {
+            imagesStore.deleteImageFromArray(imagesStore.updatingImage.id)
+        }, 1000);
+        setTimeout(() => {
+        imagesStore.addImageToArray(imagesStore.updatedImage)
+        }, 2000);
         imagesStore.updateImageFormIsOpened = false
         // imagesStore.resetImagesForm()
         // alertsStore.createAlert("success", "Images are uploaded successfully")

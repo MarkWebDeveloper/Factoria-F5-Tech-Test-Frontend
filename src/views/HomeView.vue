@@ -92,7 +92,7 @@ h1 {
 
 @media only screen and (min-width: 1264px) {
   #login-container {
-    padding: 3rem;
+    padding: 2rem;
   }
 
   #greeting {
