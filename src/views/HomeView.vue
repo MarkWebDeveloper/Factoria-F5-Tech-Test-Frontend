@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ImagesContainer from '@/components/home/ImagesContainer.vue';
 import UploadImageForm from '@/components/home/UploadImageForm.vue';
+import EditImageForm from '@/components/home/EditImageForm.vue';
 import { useAuthStore } from '@/stores/authStore';
 import { useImagesStore } from '@/stores/imagesStore';
 
@@ -22,6 +23,7 @@ const imagesStore = useImagesStore()
     <button v-if="authStore.isAuthorized" class="button" id="add-button"
       @click="imagesStore.switchUploadForm">ADD</button>
     <UploadImageForm v-if="imagesStore.uploadImageFormIsOpened" />
+    <EditImageForm v-if="imagesStore.updateImageFormIsOpened"/>
     <ImagesContainer v-if="authStore.isAuthorized" />
   </main>
 </template>

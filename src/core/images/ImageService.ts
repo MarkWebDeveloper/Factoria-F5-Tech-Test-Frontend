@@ -38,6 +38,22 @@ export default class ImageService {
         }
     }
 
+    async update(id: number, formData: FormData): Promise<IImage> {
+
+        let config: AxiosRequestConfig = {
+            withCredentials: true
+        }
+
+        try {
+            const response = await axios.put(this.imagesURL + `/updateImage/${id}`, formData, config)
+            const status = response.status
+            console.log(status);
+            return response.data
+        } catch (error) {
+            throw new Error('Error with API calling: ' + error)
+        }
+    }
+
     async delete(filename: string): Promise<void> {
 
         let config: AxiosRequestConfig = {

@@ -14,14 +14,13 @@ const imageDirectory: string = imagesStore.imageURL + `/${props.image.imageName}
     <div id="card-container">
         <div id="image-background">
             <div id="image" :style="{ 'background-image': 'url(' + imageDirectory + ')' }">
-                <button class="buttons">
+                <button class="buttons" @click="imagesStore.findUpdatingProduct(image.id), imagesStore.switchUpdateForm()">
                     <img class="icons" src="/images/icons/edit-svgrepo-com.svg" alt="delete-image">
                 </button>
                 <button class="buttons" @click="imagesStore.deleteImage(image.imageName)">
                     <img class="icons" src="/images/icons/delete-svgrepo-com (2).svg" alt="delete-image">
                 </button>
             </div>
-            
         </div>
         <p id="image-title">{{ image.imageTitle }}</p>
     </div>  

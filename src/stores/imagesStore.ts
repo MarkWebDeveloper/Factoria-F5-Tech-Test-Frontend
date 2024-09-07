@@ -11,9 +11,15 @@ export const useImagesStore = defineStore("imagesStore", {
       imageURL: import.meta.env.VITE_APP_API_IMGS as string,
       uploadImageFormIsOpened: false as boolean,
       uploadingImageUrl: "/images/placeholder-image.svg" as string,
-      uploadingImage: null as File | null,
+      uploadingImageFile: null as File | null,
       uploadingImageTitle: '' as string,
       uploadedImage: {} as IImage,
+      updateImageFormIsOpened: false,
+      updatingImageUrl: '' as string,
+      updatingImage: {} as IImage,
+      updatingImageTitle: '' as string,
+      updatingImageFile: null as File | null,
+      updatedImage: {} as IImage
     };
   },
 
@@ -36,6 +42,15 @@ export const useImagesStore = defineStore("imagesStore", {
       }
     },
 
+    async updateImage(this: any, id: number, formData: FormData): Promise<void> {
+      try {
+        this.updatedImage = await this.imageService.update(id, formData);
+        return this.updatedImage;
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
     async deleteImage(this: any, filename: string): Promise<void> {
       try {
         await this.imageService.delete(filename);
@@ -49,18 +64,28 @@ export const useImagesStore = defineStore("imagesStore", {
       this.uploadImageFormIsOpened = !this.uploadImageFormIsOpened
     },
 
+    switchUpdateForm() {
+      this.updateImageFormIsOpened = !this.updateImageFormIsOpened
+    },
+
     handleFileUpload(event: Event): void {
       const target = event.target as HTMLInputElement
       if (target && target.files) {
-        this.uploadingImage = target.files[0];
-        this.transformIntoUrl(this.uploadingImage)
+        this.uploadingImageFile = target.files[0];
+        this.uploadingImageUrl = URL.createObjectURL(this.uploadingImageFile);
       } else {
         alert("File input event is undefined")
       }
     },
 
-    transformIntoUrl(file: File): void {
-      this.uploadingImageUrl = URL.createObjectURL(file);
+    handleFileUpdate(event: Event): void {
+      const target = event.target as HTMLInputElement
+      if (target && target.files) {
+        this.updatingImageFile = target.files[0];
+        this.updatingImageUrl = URL.createObjectURL(this.updatingImageFile);
+      } else {
+        alert("File input event is undefined")
+      }
     },
 
     addImageToArray(image: IImage): void  {
@@ -74,6 +99,12 @@ export const useImagesStore = defineStore("imagesStore", {
 
     deleteImageFromArray(id: number): void {
       this.images.splice(id, 1)
+    },
+
+    findUpdatingProduct(id: number): void {
+      this.updatingImage = this.images.find((element: IImage) => element.id == id)!
+      this.updatingImageUrl = this.imageURL + `/${this.updatingImage.imageName}`
+      this.updatingImageTitle = this.updatingImage.imageTitle
     },
   },
 });
