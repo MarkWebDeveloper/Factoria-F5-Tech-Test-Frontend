@@ -1,26 +1,21 @@
 <script setup lang="ts">
-import ImageService from '@/core/images/ImageService';
 import { useImagesStore } from '@/stores/imagesStore';
-import { ref } from 'vue';
 
 const imagesStore = useImagesStore()
-const imageTitle = ref('')
 
 async function handleSubmit(): Promise<void> {
 
     const formData = new FormData()
     formData.append('file', imagesStore.uploadingImage!)
-    formData.append('imageTitle', imageTitle.value)
+    formData.append('imageTitle', imagesStore.uploadingImageTitle)
 
     try {
         imagesStore.postImage(formData)
-        // imagesStore.deleteImageFromArray(imagesStore.images.findIndex((element) => element.id == productsStore.newProductId))
-        // const productWithImages = await productService.getOneById(productsStore.newProductId)
         setTimeout(() => {
             imagesStore.addImageToArray(imagesStore.uploadedImage)
         }, 1000);
         imagesStore.uploadImageFormIsOpened = false
-        // imagesStore.resetImagesForm()
+        imagesStore.resetImagesForm()
         // alertsStore.createAlert("success", "Images are uploaded successfully")
     } catch (error) {
         // alertsStore.createAlert("error", "Unexpected error occurred during the images upload")
@@ -46,7 +41,7 @@ async function handleSubmit(): Promise<void> {
                 <input @change="imagesStore.handleFileUpload" class="image-input" type="file" name="file"
                     id="image-upload">
             </label>
-            <input class="email-input" type="text" name="email-input" id="email-input" v-model="imageTitle" required placeholder="Insert Image Title">
+            <input class="email-input" type="text" name="email-input" id="email-input" v-model="imagesStore.uploadingImageTitle" required placeholder="Insert Image Title">
             <button class="send-button" id="send-button" type="submit">SEND</button>
         </form>
     </div>

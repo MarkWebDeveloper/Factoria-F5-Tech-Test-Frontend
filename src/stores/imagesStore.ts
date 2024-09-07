@@ -12,6 +12,7 @@ export const useImagesStore = defineStore("imagesStore", {
       uploadImageFormIsOpened: false as boolean,
       uploadingImageUrl: "/images/placeholder-image.svg" as string,
       uploadingImage: null as File | null,
+      uploadingImageTitle: '' as string,
       uploadedImage: {} as IImage,
     };
   },
@@ -37,16 +38,16 @@ export const useImagesStore = defineStore("imagesStore", {
     },
 
     switchUploadForm() {
-      this.uploadImageFormIsOpened = !this.uploadImageFormIsOpened;
+      this.uploadImageFormIsOpened = !this.uploadImageFormIsOpened
     },
 
     handleFileUpload(event: Event): void {
-      const target = event.target as HTMLInputElement;
+      const target = event.target as HTMLInputElement
       if (target && target.files) {
         this.uploadingImage = target.files[0];
-        this.transformIntoUrl(this.uploadingImage);
+        this.transformIntoUrl(this.uploadingImage)
       } else {
-        alert("File input event is undefined");
+        alert("File input event is undefined")
       }
     },
 
@@ -57,5 +58,10 @@ export const useImagesStore = defineStore("imagesStore", {
     addImageToArray(image: IImage): void  {
       this.images.push(image)
     },
+
+    resetImagesForm(): void {
+      this.uploadingImageUrl = "/images/placeholder-image.svg"
+      this.uploadingImageTitle = ''
+    }
   },
 });
