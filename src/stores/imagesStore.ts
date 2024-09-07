@@ -44,7 +44,7 @@ export const useImagesStore = defineStore("imagesStore", {
 
     async updateImage(this: any, id: number, formData: FormData): Promise<void> {
       try {
-        this.updatedImage = await this.imageService.update(id, formData);
+        this.updatedImage = await this.imageService.update(id, formData)
         return this.updatedImage;
       } catch (error) {
         console.error(error)
@@ -54,7 +54,8 @@ export const useImagesStore = defineStore("imagesStore", {
     async deleteImage(this: any, filename: string): Promise<void> {
       try {
         await this.imageService.delete(filename);
-        this.deleteImageFromArray(this.images.findIndex((element: IImage) => element.imageName == filename));
+        const imageIndex = this.images.findIndex((element: IImage) => element.imageName == filename)
+        this.images.splice(imageIndex, 1)
       } catch (error) {
         console.error(error)
       }
