@@ -17,7 +17,7 @@ const imageDirectory: string = imagesStore.imageURL + `/${props.image.imageName}
                 <button class="buttons">
                     <img class="icons" src="/images/icons/edit-svgrepo-com.svg" alt="delete-image">
                 </button>
-                <button class="buttons">
+                <button class="buttons" @click="imagesStore.deleteImage(image.imageName)">
                     <img class="icons" src="/images/icons/delete-svgrepo-com (2).svg" alt="delete-image">
                 </button>
             </div>

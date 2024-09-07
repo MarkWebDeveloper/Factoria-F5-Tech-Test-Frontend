@@ -27,14 +27,22 @@ export const useImagesStore = defineStore("imagesStore", {
       return this.images;
     },
 
-    async postImage(this: any, formData: FormData): Promise<IImage> {
+    async postImage(this: any, formData: FormData): Promise<void> {
       try {
         this.uploadedImage = await this.imageService.post(formData);
         return this.uploadedImage;
       } catch (error) {
         console.error(error)
       }
-      return this.uploadedImage
+    },
+
+    async deleteImage(this: any, filename: string): Promise<void> {
+      try {
+        await this.imageService.delete(filename);
+        this.deleteImageFromArray(this.images.findIndex((element: IImage) => element.imageName == filename));
+      } catch (error) {
+        console.error(error)
+      }
     },
 
     switchUploadForm() {
@@ -62,6 +70,10 @@ export const useImagesStore = defineStore("imagesStore", {
     resetImagesForm(): void {
       this.uploadingImageUrl = "/images/placeholder-image.svg"
       this.uploadingImageTitle = ''
-    }
+    },
+
+    deleteImageFromArray(id: number): void {
+      this.images.splice(id, 1)
+    },
   },
 });

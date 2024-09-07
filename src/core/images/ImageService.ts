@@ -37,4 +37,23 @@ export default class ImageService {
             throw new Error('Error with API calling: ' + error)
         }
     }
+
+    async delete(filename: string): Promise<void> {
+
+        let config: AxiosRequestConfig = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true
+        }
+        
+        try {
+            const response = await axios.delete(`${this.imagesURL}/${filename}`, config)
+            const status = response.status
+            console.log(status);
+        } catch (error) {
+            throw new Error('Error with API calling: ' + error)
+        }
+    }
+
 }
