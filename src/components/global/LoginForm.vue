@@ -44,7 +44,7 @@ function submitForm() {
 
 <style lang="scss" scoped>
 .login-background {
-    position: absolute;
+    position: fixed;
     display: flex;
     align-items: center;
     width: 100%;

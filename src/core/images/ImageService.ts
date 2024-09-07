@@ -12,10 +12,26 @@ export default class ImageService {
         }
 
         try {
-            const response = await axios.get(this.imagesURL, config)
+            const response = await axios.get(this.imagesURL + `/getCurrentUserImages`, config)
             const status = response
             console.log(status);
             console.log(response.data)
+            return response.data
+        } catch (error) {
+            throw new Error('Error with API calling: ' + error)
+        }
+    }
+
+    async post(formData: FormData): Promise<IImage> {
+
+        let config: AxiosRequestConfig = {
+            withCredentials: true
+        }
+
+        try {
+            const response = await axios.post(this.imagesURL + "/uploadImage", formData, config)
+            const status = response.status
+            console.log(status);
             return response.data
         } catch (error) {
             throw new Error('Error with API calling: ' + error)

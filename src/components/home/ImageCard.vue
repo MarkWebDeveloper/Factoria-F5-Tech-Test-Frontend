@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IImage } from '@/core/auth/IImage';
+import type { IImage } from '@/core/images/IImage';
 import { useImagesStore } from '@/stores/imagesStore';
 
 const props = defineProps<{
