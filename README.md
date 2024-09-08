@@ -46,11 +46,11 @@ Desktop View <br/>
 
 Login process <br/>
 
-<video controls src="public/images/videos/image-manager-login-demo.mp4" title="Title"></video>
+![Login-process](public/images/gifs/login-gif.gif)
 
 Image Upload Process <br/>
 
-<video controls src="public/images/videos/image-manager-post-demo.mp4" title="Title"></video>
+![Upload-process](public/images/gifs/post-gif.gif)
 
 
 ## Recommended IDE Setup
