@@ -98,10 +98,15 @@ export const useImagesStore = defineStore("imagesStore", {
       this.uploadingImageTitle = ''
     },
 
-    deleteImageFromArray(id: number): void {
+    deleteImageFromArray(id: number): number {
       const foundIndex = this.images.findIndex((image: IImage) => image.id == id)
       console.log(foundIndex)
       this.images.splice(foundIndex, 1)
+      return foundIndex
+    },
+
+    addImageToArrayInPlace(index: number, image: IImage): void {
+      this.images.splice(index, 0, image)
     },
 
     findUpdatingProduct(id: number): void {

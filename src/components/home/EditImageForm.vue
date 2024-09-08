@@ -12,12 +12,13 @@ async function handleSubmit(): Promise<void> {
     formData.append('imageTitle', imagesStore.updatingImageTitle)
 
     try {
+        let deletedImageIndex = 0;
         await imagesStore.updateImage(imagesStore.updatingImage.id, formData)
         setTimeout(() => {
-            imagesStore.deleteImageFromArray(imagesStore.updatingImage.id)
+            deletedImageIndex = imagesStore.deleteImageFromArray(imagesStore.updatingImage.id)
         }, 1000);
         setTimeout(() => {
-        imagesStore.addImageToArray(imagesStore.updatedImage)
+        imagesStore.addImageToArrayInPlace(deletedImageIndex, imagesStore.updatedImage)
         }, 2000);
         imagesStore.updateImageFormIsOpened = false
     } catch (error) {
