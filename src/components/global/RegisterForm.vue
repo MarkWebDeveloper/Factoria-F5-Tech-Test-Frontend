@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ILoginDTO } from '@/core/auth/ILoginDTO';
+import type { IRegisterDTO } from '@/core/auth/IRegisterDTO';
 import { useAuthStore } from '@/stores/authStore';
 import { ref } from 'vue';
 
@@ -8,19 +8,19 @@ const authStore = useAuthStore()
 const username = ref<string>("")
 const password = ref<string>("")
 
-const loginDTO: ILoginDTO = {
+const registerDTO: IRegisterDTO = {
     username: "",
     password: ""
 }
 
-const createLoginDTO = (): void => {
-    loginDTO.username = username.value
-    loginDTO.password = password.value
+const createRegisterDTO = (): void => {
+    registerDTO.username = username.value
+    registerDTO.password = btoa(password.value)
 }
 
 function submitForm() {
-    createLoginDTO()
-    authStore.login(loginDTO)
+    createRegisterDTO()
+    authStore.register(registerDTO)
 }
 
 </script>

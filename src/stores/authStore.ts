@@ -2,6 +2,7 @@ import AuthService from "@/core/auth/AuthService";
 import type { ILoginDTO } from "@/core/auth/ILoginDTO";
 import { defineStore } from "pinia";
 import { useImagesStore } from "./imagesStore";
+import type { IRegisterDTO } from "@/core/auth/IRegisterDTO";
 
 export const useAuthStore = defineStore("authStore", {
     state: () => {
@@ -26,6 +27,16 @@ export const useAuthStore = defineStore("authStore", {
             this.isAuthorized = true
             this.switchLoginForm()
             this.imagesStore.getImages()
+        } catch (error) {
+            console.error(error)
+        }
+      },
+      async register(registerDTO: IRegisterDTO): Promise<void> {
+        try {
+            const response = await this.authService.register(registerDTO)
+            console.log(response)
+            this.switchLoginForm()
+            this.switchRegisterForm()
         } catch (error) {
             console.error(error)
         }
