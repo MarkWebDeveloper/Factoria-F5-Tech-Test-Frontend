@@ -26,6 +26,7 @@ export default class LoginService {
             console.log(response.data)
             return response.data            
         } catch (error) {
+            alert("The username or password is incorrect.")
             throw new Error('Error with login operation: ' + error)
         }
     }
@@ -37,7 +38,8 @@ export default class LoginService {
             const status = response
             console.log(status);
             console.log(response.data)
-            return response.data            
+            alert ("The register has been successfull. You can now log in into your new account.")
+            return response.data      
         } catch (error) {
             throw new Error('Error with register operation: ' + error)
         }
