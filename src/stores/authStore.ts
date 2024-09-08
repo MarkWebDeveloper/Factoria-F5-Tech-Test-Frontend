@@ -11,7 +11,8 @@ export const useAuthStore = defineStore("authStore", {
             isAuthorized: false as boolean,
             authService: new AuthService,
             loginFormIsOpened: false as boolean,
-            imagesStore: useImagesStore()
+            imagesStore: useImagesStore(),
+            registerFormIsOpened: false as boolean
           };
     },
   
@@ -40,6 +41,10 @@ export const useAuthStore = defineStore("authStore", {
       },
       switchLoginForm() {
         this.loginFormIsOpened = !this.loginFormIsOpened
+      },
+
+      switchRegisterForm() {
+        this.registerFormIsOpened = !this.registerFormIsOpened
       },
     },
   });

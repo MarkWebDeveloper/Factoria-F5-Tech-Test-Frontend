@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import Warning from './components/global/Warning.vue';
 import LoginForm from './components/global/LoginForm.vue';
 import { useAuthStore } from './stores/authStore';
+import RegisterForm from './components/global/RegisterForm.vue';
 
 const authStore = useAuthStore()
 </script>
@@ -17,6 +18,7 @@ const authStore = useAuthStore()
     
     <Warning/>
     <LoginForm v-if="authStore.loginFormIsOpened"/>
+    <RegisterForm v-if="authStore.registerFormIsOpened"/>
 
   <RouterView />
 </template>

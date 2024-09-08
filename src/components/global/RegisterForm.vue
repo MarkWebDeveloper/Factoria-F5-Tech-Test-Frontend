@@ -28,16 +28,16 @@ function submitForm() {
 <template>
     <div class="login-background">
         <form class="login-form-container" @submit.prevent="submitForm">
-            <button class="close-button" @click="authStore.switchLoginForm()">
+            <button class="close-button" @click="authStore.switchRegisterForm()">
                 <img class="close-button-image" src="/images/icons/close-tab-svgrepo-com.svg" alt="close-image">
             </button>
-            <h2>LOGIN</h2>
+            <h2>REGISTER</h2>
             <label for="email-input">Username</label>
             <input class="email-input" type="text" name="email-input" id="email-input" v-model="username" required>
             <label for="password-input">Password</label>
             <input class="password-input" type="password" name="password-input" id="password-input" v-model="password" autocomplete="on" required>
-            <p class="register-text" @click="authStore.switchLoginForm(), authStore.switchRegisterForm()">Register here</p>
-            <button class="login-button" id="login-button" type="submit">LOGIN</button>
+            <p class="register-text" @click="authStore.switchRegisterForm(), authStore.switchLoginForm()">Login here</p>
+            <button class="login-button" id="login-button" type="submit">SEND</button>
         </form>
     </div>
 </template>
