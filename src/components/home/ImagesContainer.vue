@@ -18,6 +18,7 @@ const imagesStore = useImagesStore()
     grid-gap: 1rem;
     padding-inline-start: 1rem;
     padding-inline-end: 1rem;
+    margin-bottom: 5rem;
 }
 
 @media only screen and (min-width: 960px) {

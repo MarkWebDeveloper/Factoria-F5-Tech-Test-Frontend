@@ -71,7 +71,7 @@ export const useImagesStore = defineStore("imagesStore", {
 
     handleFileUpload(event: Event): void {
       const target = event.target as HTMLInputElement
-      if (target && target.files) {
+      if (target && target.files && target.files.length > 0) {
         this.uploadingImageFile = target.files[0];
         this.uploadingImageUrl = URL.createObjectURL(this.uploadingImageFile);
       } else {
@@ -81,7 +81,7 @@ export const useImagesStore = defineStore("imagesStore", {
 
     handleFileUpdate(event: Event): void {
       const target = event.target as HTMLInputElement
-      if (target && target.files) {
+      if (target && target.files && target.files.length > 0) {
         this.updatingImageFile = target.files[0];
         this.updatingImageUrl = URL.createObjectURL(this.updatingImageFile);
       } else {
