@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import type { IImage } from '@/core/images/IImage';
 import { useImagesStore } from '@/stores/imagesStore';
 
 const imagesStore = useImagesStore()
-
-// onMounted(async() => {
-//     imagesStore.updatingImageTitle = imagesStore.updatingImage.imageTitle
-// })
 
 async function handleSubmit(): Promise<void> {
 
@@ -25,10 +20,7 @@ async function handleSubmit(): Promise<void> {
         imagesStore.addImageToArray(imagesStore.updatedImage)
         }, 2000);
         imagesStore.updateImageFormIsOpened = false
-        // imagesStore.resetImagesForm()
-        // alertsStore.createAlert("success", "Images are uploaded successfully")
     } catch (error) {
-        // alertsStore.createAlert("error", "Unexpected error occurred during the images upload")
         throw new Error("Unexpected error happened during images upload" + error)
     }
 

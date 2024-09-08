@@ -16,9 +16,7 @@ async function handleSubmit(): Promise<void> {
         }, 1000);
         imagesStore.uploadImageFormIsOpened = false
         imagesStore.resetImagesForm()
-        // alertsStore.createAlert("success", "Images are uploaded successfully")
     } catch (error) {
-        // alertsStore.createAlert("error", "Unexpected error occurred during the images upload")
         throw new Error("Unexpected error happened during images upload" + error)
     }
 
