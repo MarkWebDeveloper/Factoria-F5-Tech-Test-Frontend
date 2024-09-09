@@ -88,3 +88,6 @@ npm run build
 ```sh
 npm run test:unit
 ```
+### Warning!
+
+The environment variables were exposed to facilitate the project installation. It should not be done in the production environments.
